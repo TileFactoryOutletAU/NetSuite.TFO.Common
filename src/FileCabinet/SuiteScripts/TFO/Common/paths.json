@@ -1,5 +1,6 @@
 {
     "paths": {
+        "TFO/Common": "/SuiteScripts/TFO/Common.js",
         "TFO/Args": "/SuiteScripts/TFO/Common/Args.js",
         "TFO/Arrays": "/SuiteScripts/TFO/Common/Arrays.js",
         "TFO/Search": "/SuiteScripts/TFO/Common/Search.js"
