@@ -1,0 +1,8 @@
+<manifest projecttype="ACCOUNTCUSTOMIZATION">
+  <projectname>TFO.AccountCustomizationTemplate</projectname>
+  <frameworkversion>1.0</frameworkversion>
+  <dependencies>
+    <features/>
+    <files/>
+  </dependencies>
+</manifest>
