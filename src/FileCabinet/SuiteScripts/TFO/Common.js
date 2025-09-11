@@ -6,8 +6,8 @@
  */
 
 define(
-    ['TFO/Args', 'TFO/Arrays', 'TFO/Search'],
-    (Args, Arrays, Search) => {
+    ['TFO/Args', 'TFO/Arrays', 'TFO/Files', 'TFO/Search'],
+    (Args, Arrays, Files, Search) => {
 
         return {
             /* Modules */
@@ -20,6 +20,9 @@ define(
             /* Arrays */
             findByProperty: Arrays.findByProperty,
             groupByProperty: Arrays.groupByProperty,
+
+            /* Files */
+            getFolderByPath: Files.getFolderByPath,
 
             /* Search */
             SearchOperator: Search.Operator,
