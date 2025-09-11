@@ -4,6 +4,7 @@
         "TFO/Args": "/SuiteScripts/TFO/Common/Args.js",
         "TFO/Arrays": "/SuiteScripts/TFO/Common/Arrays.js",
         "TFO/Files": "/SuiteScripts/TFO/Common/Files.js",
+        "TFO/Install": "/SuiteScripts/TFO/Common/Install.js",
         "TFO/Search": "/SuiteScripts/TFO/Common/Search.js"
     }
 }

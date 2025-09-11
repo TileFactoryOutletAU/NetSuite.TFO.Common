@@ -6,8 +6,8 @@
  */
 
 define(
-    ['TFO/Args', 'TFO/Arrays', 'TFO/Files', 'TFO/Search'],
-    (Args, Arrays, Files, Search) => {
+    ['TFO/Args', 'TFO/Arrays', 'TFO/Files', 'TFO/Install', 'TFO/Search'],
+    (Args, Arrays, Files, Install, Search) => {
 
         return {
             /* Modules */
@@ -23,6 +23,9 @@ define(
 
             /* Files */
             getFolderByPath: Files.getFolderByPath,
+
+            /* Install */
+            listInstallManifests: Install.listManifests,
 
             /* Search */
             SearchOperator: Search.Operator,
