@@ -80,14 +80,18 @@ define(
                 filters: filters,
                 columns: columns,
             });
-            let pagedResults = s.runPaged({ pageSize: 1000 });
+
+            let pageSize = 1000;
+            if ((params.limit >= 5) && (params.limit <= 1000)) pageSize = params.limit;
+            let pagedResults = s.runPaged({ pageSize: pageSize });
 
             let results = [];
 
             let recordCount = 0;
-            pagedResults.pageRanges.forEach(function (pageRange) {
+            pagedResults.pageRanges.forEach((pageRange) => {
+                if ((params.limit > 0) && (recordCount >= params.limit)) return false;
                 let page = pagedResults.fetch({ index: pageRange.index });
-                page.data.forEach(function (result) {
+                page.data.forEach((result) => {
                     if ((params.limit > 0) && (recordCount >= params.limit)) return false;
                     let out = {};
                     for (let colIdx in columns) {
