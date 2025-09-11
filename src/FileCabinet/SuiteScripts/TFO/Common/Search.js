@@ -114,13 +114,13 @@ define(
         };
 
         return {
-            createColumn: (args) => { return search.createColumn(args); },
-            getSingleField: getSingleField,
-            simpleSearch: simpleSearch,
-
             Operator: search.Operator,
             Parsing: Parsing,
             Type: search.Type,
+
+            createColumn: (args) => { return search.createColumn(args); },
+            getSingleField: getSingleField,
+            simpleSearch: simpleSearch,
         }
 
     }
