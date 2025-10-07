@@ -1,10 +1,11 @@
 {
+    "baseUrl": "/SuiteScripts/TFO",
     "paths": {
-        "TFO/Common": "/SuiteScripts/TFO/Common.js",
-        "TFO/Args": "/SuiteScripts/TFO/Common/Args.js",
-        "TFO/Arrays": "/SuiteScripts/TFO/Common/Arrays.js",
-        "TFO/Files": "/SuiteScripts/TFO/Common/Files.js",
-        "TFO/Install": "/SuiteScripts/TFO/Common/Install.js",
-        "TFO/Search": "/SuiteScripts/TFO/Common/Search.js"
+        "TFO/Common": "./Common.js",
+        "TFO/Args": "./Common/Args.js",
+        "TFO/Arrays": "./Common/Arrays.js",
+        "TFO/Files": "./Common/Files.js",
+        "TFO/Install": "./Common/Install.js",
+        "TFO/Search": "./Common/Search.js"
     }
 }
