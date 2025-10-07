@@ -1,6 +1,6 @@
 /**
  * Common.js
- * @NApiVersion   2.x
+ * @NApiVersion   2.1
  * @NModuleScope  Public
  * @NAmdConfig    ./Common/paths.json
  */
