@@ -19,13 +19,13 @@ define(
         };
 
         const getSingleField = (args) => {
-            let params = parseArgs(args, [
+            let params = Args.parse(args, [
                 { name: "type" },
                 { name: "id" },
                 { name: "fieldId" },
             ], [
                 { name: "getText", default: false },
-                { name: "parsing", default: SearchParsing.NONE },
+                { name: "parsing", default: Parsing.NONE },
             ]);
             let result = search.lookupFields({
                 type: params.type,
@@ -45,12 +45,12 @@ define(
             }
 
             switch (params.parsing) {
-                case SearchParsing.FLOAT:
+                case Parsing.FLOAT:
                     return parseFloat(result);
-                case SearchParsing.INTEGER:
+                case Parsing.INTEGER:
                     return parseInt(result);
 
-                case SearchParsing.NONE:
+                case Parsing.NONE:
                 default:
                     return result;
             }
