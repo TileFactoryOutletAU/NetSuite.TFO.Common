@@ -2,7 +2,6 @@
  * Args.js
  * @NApiVersion   2.1
  * @NModuleScope  Public
- * @NAmdConfig    ./paths.json
  */
 
 define(

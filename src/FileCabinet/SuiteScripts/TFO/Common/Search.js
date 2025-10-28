@@ -2,11 +2,10 @@
  * Search.js
  * @NApiVersion   2.1
  * @NModuleScope  Public
- * @NAmdConfig    ./paths.json
  */
 
 define(
-    ['TFO/Args', 'N/search'],
+    ['/SuiteScripts/TFO/Common/Args', 'N/search'],
     (Args, search) => {
 
         const Parsing = {

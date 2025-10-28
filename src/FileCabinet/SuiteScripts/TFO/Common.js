@@ -2,11 +2,16 @@
  * Common.js
  * @NApiVersion   2.1
  * @NModuleScope  Public
- * @NAmdConfig    ./Common/paths.json
  */
 
 define(
-    ['TFO/Args', 'TFO/Arrays', 'TFO/Files', 'TFO/Install', 'TFO/Search'],
+    [
+        '/SuiteScripts/TFO/Common/Args',
+        '/SuiteScripts/TFO/Common/Arrays',
+        '/SuiteScripts/TFO/Common/Files',
+        '/SuiteScripts/TFO/Common/Install',
+        '/SuiteScripts/TFO/Common/Search'
+    ],
     (Args, Arrays, Files, Install, Search) => {
 
         return {

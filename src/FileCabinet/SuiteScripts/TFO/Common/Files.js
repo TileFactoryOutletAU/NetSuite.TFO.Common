@@ -2,11 +2,10 @@
  * Files.js
  * @NApiVersion   2.1
  * @NModuleScope  Public
- * @NAmdConfig    ./paths.json
  */
 
 define(
-    ['TFO/Args', 'TFO/Search'],
+    ['/SuiteScripts/TFO/Common/Args', '/SuiteScripts/TFO/Common/Search'],
     (Args, Search) => {
 
         const getFilesInFolder = (args) => {

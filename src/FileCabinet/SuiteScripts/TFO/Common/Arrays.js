@@ -2,11 +2,10 @@
  * Arrays.js
  * @NApiVersion   2.1
  * @NModuleScope  Public
- * @NAmdConfig    ./paths.json
  */
 
 define(
-    ['TFO/Args'],
+    ['/SuiteScripts/TFO/Common/Args'],
     (Args) => {
 
         const findByProperty = (args) => {

@@ -2,11 +2,10 @@
  * Install.js
  * @NApiVersion   2.1
  * @NModuleScope  Public
- * @NAmdConfig    ./paths.json
  */
 
 define(
-    ['TFO/Files'],
+    ['/SuiteScripts/TFO/Common/Files'],
     (Files) => {
 
         const listManifests = () => {
