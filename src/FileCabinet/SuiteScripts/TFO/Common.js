@@ -12,7 +12,7 @@ define(
         '/SuiteScripts/TFO/Common/Install',
         '/SuiteScripts/TFO/Common/Search'
     ],
-    (Args, Arrays, Files, Install, Search) => {
+    function (Args, Arrays, Files, Install, Search) {
 
         return {
             /* Modules */

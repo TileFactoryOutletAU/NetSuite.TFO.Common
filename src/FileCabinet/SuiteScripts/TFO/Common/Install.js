@@ -6,11 +6,11 @@
 
 define(
     ['/SuiteScripts/TFO/Common/Files'],
-    (Files) => {
+    function (Files) {
 
-        const listManifests = () => {
-            let folder = Files.getFolderByPath({ path: "/SuiteScripts/TFO/.install" });
-            let files = Files.getFilesInFolder({ folderId: folder.id, extension: "json" });
+        function listManifests() {
+            var folder = Files.getFolderByPath({ path: "/SuiteScripts/TFO/.install" });
+            var files = Files.getFilesInFolder({ folderId: folder.id, extension: "json" });
             return files;
         };
 

@@ -6,17 +6,17 @@
 
 define(
     ['/SuiteScripts/TFO/Common/Args', '/SuiteScripts/TFO/Common/Search'],
-    (Args, Search) => {
+    function (Args, Search) {
 
-        const getFilesInFolder = (args) => {
-            let params = Args.parse(args, [
+        function getFilesInFolder(args) {
+            var params = Args.parse(args, [
                 { name: "folderId" },
             ], [
                 { name: "extension", type: "string", default: "" },
                 { name: "nameFilter", type: "object", default: null },
             ]);
 
-            let filters = [ [ "folder", Search.Operator.IS, params.folderId ] ];
+            var filters = [ [ "folder", Search.Operator.IS, params.folderId ] ];
             
             if (params.extension.length > 0) {
                 filters.push("and", [
@@ -32,7 +32,7 @@ define(
 
             //return filters;
 
-            let results = Search.simpleSearch({
+            var results = Search.simpleSearch({
                 type: "file",
                 columns: [
                     Search.createColumn({ name: "internalid", label: "id" }),
@@ -50,25 +50,25 @@ define(
             return results;
         };
 
-        const getFolderByPath = (args) => {
-            let params = Args.parse(args, [
+        function getFolderByPath(args) {
+            var params = Args.parse(args, [
                 { name: "path", type: "string" },
             ], [
                 { name: "all", type: "boolean", default: false },
             ]);
 
-            let pathParts = params.path.split("/").filter((v) => (v !== ""));
-            let returnData = [];
-            let parentId = null;
+            var pathParts = params.path.split("/").filter(function(v) { return v !== ""; });
+            var returnData = [];
+            var parentId = null;
 
-            for (let i in pathParts) {
-                let part = pathParts[i];
+            for (var i in pathParts) {
+                var part = pathParts[i];
 
-                let filters = [ [ "name", Search.Operator.IS, part ] ];
+                var filters = [ [ "name", Search.Operator.IS, part ] ];
                 if (parentId) { filters.push("and", [ "parent", Search.Operator.IS, parentId ]); }
                 else { filters.push("and", [ "istoplevel", Search.Operator.IS, true ]); }
 
-                let data = Search.simpleSearch({
+                var data = Search.simpleSearch({
                     type: Search.Type.FOLDER,
                     columns: [
                         Search.createColumn({ label: "id", name: "internalid" }),

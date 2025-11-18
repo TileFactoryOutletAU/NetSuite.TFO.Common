@@ -5,10 +5,10 @@
  */
 
 define(
-    ['/SuiteScripts/TFO/Common/Args', 'N/search'],
-    (Args, search) => {
+    ['N/search', '/SuiteScripts/TFO/Common/Args'],
+    function (search, Args) {
 
-        const Parsing = {
+        var Parsing = {
             NONE: null,
 
             INT: "integer",
@@ -18,8 +18,8 @@ define(
             FLOAT: "float",
         };
 
-        const getSingleField = (args) => {
-            let params = Args.parse(args, [
+        function getSingleField(args) {
+            var params = Args.parse(args, [
                 { name: "type" },
                 { name: "id" },
                 { name: "fieldId" },
@@ -27,7 +27,7 @@ define(
                 { name: "getText", default: false },
                 { name: "parsing", default: Parsing.NONE },
             ]);
-            let result = search.lookupFields({
+            var result = search.lookupFields({
                 type: params.type,
                 id: params.id,
                 columns: params.fieldId,
@@ -56,8 +56,8 @@ define(
             }
         };
 
-        const simpleSearch = (args) => {
-            let params = Args.parse(args, [
+        function simpleSearch(args) {
+            var params = Args.parse(args, [
                 { name: "type", type: "string" },
             ], [
                 { name: "filters", type: "object", default: [] },
@@ -66,36 +66,36 @@ define(
                 { name: "callback" },
             ]);
 
-            let filters = params.filters;
+            var filters = params.filters;
 
-            let columns = [];
-            for (let i in params.columns) {
-                let column = params.columns[i];
+            var columns = [];
+            for (var i in params.columns) {
+                var column = params.columns[i];
                 columns.push((typeof column === "string") ? search.createColumn({ name: column }) : column);
             }
 
-            let s = search.create({
+            var s = search.create({
                 type: params.type,
                 filters: filters,
                 columns: columns,
             });
 
-            let pageSize = 1000;
+            var pageSize = 1000;
             if ((params.limit >= 5) && (params.limit <= 1000)) pageSize = params.limit;
-            let pagedResults = s.runPaged({ pageSize: pageSize });
+            var pagedResults = s.runPaged({ pageSize: pageSize });
 
-            let results = [];
+            var results = [];
 
-            let recordCount = 0;
-            pagedResults.pageRanges.forEach((pageRange) => {
+            var recordCount = 0;
+            pagedResults.pageRanges.forEach(function (pageRange) {
                 if ((params.limit > 0) && (recordCount >= params.limit)) return false;
-                let page = pagedResults.fetch({ index: pageRange.index });
-                page.data.forEach((result) => {
+                var page = pagedResults.fetch({ index: pageRange.index });
+                page.data.forEach(function (result) {
                     if ((params.limit > 0) && (recordCount >= params.limit)) return false;
-                    let out = {};
-                    for (let colIdx in columns) {
-                        let col = columns[colIdx];
-                        let name = col.name;
+                    var out = {};
+                    for (var colIdx in columns) {
+                        var col = columns[colIdx];
+                        var name = col.name;
                         if (col.hasOwnProperty('join')) {
                             if (col.join) {
                                 if (col.join.length > 0) {
@@ -103,7 +103,7 @@ define(
                                 }
                             }
                         }
-                        let id = col.label ? col.label : name;
+                        var id = col.label ? col.label : name;
                         out[id] = result.getValue(col);
                     }
                     results.push(out);
@@ -117,11 +117,11 @@ define(
         };
 
         return {
-            Operator: search.Operator,
+            Operator: (function() { return search.Operator })(),
             Parsing: Parsing,
-            Type: search.Type,
+            Type: (function() { return search.Type; })(),
 
-            createColumn: (args) => { return search.createColumn(args); },
+            createColumn: function(params) { return search.createColumn(params); },
             getSingleField: getSingleField,
             simpleSearch: simpleSearch,
         }

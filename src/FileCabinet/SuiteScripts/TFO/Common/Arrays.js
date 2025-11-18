@@ -6,34 +6,34 @@
 
 define(
     ['/SuiteScripts/TFO/Common/Args'],
-    (Args) => {
+    function (Args) {
 
-        const findByProperty = (args) => {
-            let params = Args.parse(args, [
+        function findByProperty(args) {
+            var params = Args.parse(args, [
                 { name: "array", type: "object" },
                 { name: "property", type: "string" },
                 { name: "value" }
             ], []);
 
-            for (let i in params.array) {
+            for (var i in params.array) {
                 if (!params.array[i].hasOwnProperty(params.property)) return -1;
                 if (params.array[i][params.property] == params.value) return i;
             }
             return -1;
         };
 
-        const groupByProperty = (args) => {
-            let params = Args.parse(args, [
+        function groupByProperty(args) {
+            var params = Args.parse(args, [
                 { name: "array", type: "object" },
                 { name: "property", type: "string" },
             ], []);
 
-            let groups = {};
-            for (let i in params.array) {
-                let item = params.array[i];
+            var groups = {};
+            for (var i in params.array) {
+                var item = params.array[i];
 
                 if (!item.hasOwnProperty(params.property)) return false;
-                let value = item[params.property];
+                var value = item[params.property];
 
                 if (!groups.hasOwnProperty(value)) groups[value] = [];
                 groups[value].push(item);

@@ -6,22 +6,22 @@
 
 define(
     [],
-    () => {
+    function () {
 
-        const parse = (args, required, optional) => {
-            let params = {};
+        function parse(args, required, optional) {
+            var params = {};
             args = typeof args !== "undefined" ? args : {};
 
-            for (let i in required) {
-                let item = required[i];
+            for (var i in required) {
+                var item = required[i];
 
-                let name = item.hasOwnProperty("name") ? item.name : item;
+                var name = item.hasOwnProperty("name") ? item.name : item;
                 if (typeof name !== "string") throw new Error("Argument has no name");
 
                 if (!args.hasOwnProperty(name)) throw new Error("Missing Argument: " + name);
-                let value = args[name];
+                var value = args[name];
 
-                let type = item.hasOwnProperty("type") ? item.type : null;
+                var type = item.hasOwnProperty("type") ? item.type : null;
                 if (type) {
                     if (typeof value !== type) throw new Error("Argument " + name + " is the wrong type. Got " + typeof value + ", expected " + type);
                 }
@@ -29,16 +29,16 @@ define(
                 params[name] = value;
             }
 
-            for (let i in optional) {
-                let item = optional[i];
+            for (var i in optional) {
+                var item = optional[i];
 
-                let name = item.hasOwnProperty("name") ? item.name : item;
+                var name = item.hasOwnProperty("name") ? item.name : item;
                 if (typeof name !== "string") throw new Error("Argument has no name");
 
-                let defaultValue = item.hasOwnProperty("default") ? item.default : null;
-                let value = args.hasOwnProperty(name) ? args[name] : defaultValue;
+                var defaultValue = item.hasOwnProperty("default") ? item.default : null;
+                var value = args.hasOwnProperty(name) ? args[name] : defaultValue;
 
-                let type = item.hasOwnProperty("type") ? item.type : null;
+                var type = item.hasOwnProperty("type") ? item.type : null;
                 if (type) {
                     if (typeof value !== type) throw new Error("Argument " + name + " is the wrong type. Got " + typeof value + ", expected " + type);
                 }
