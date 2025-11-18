@@ -119,6 +119,8 @@ define(
         return {
             Operator: (function() { return search.Operator })(),
             Parsing: Parsing,
+            Sort: (function() { return search.Sort; })(),
+            Summary: (function() { return search.Summary; })(),
             Type: (function() { return search.Type; })(),
 
             createColumn: function(params) { return search.createColumn(params); },
